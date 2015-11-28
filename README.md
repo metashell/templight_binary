@@ -7,3 +7,5 @@ It is tied to a specific commit of the Metashell repository. The current
 commit id can be found in the `commit` file. It can be upgraded by running
 the `update_to_latest.sh` script.
 
+To build the Templight binary, run the `build.sh` script.
+
