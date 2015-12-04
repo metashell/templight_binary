@@ -60,7 +60,7 @@ cd metashell
   cd ..
   cd 3rd/templight/build/bin
     OUT_FILE="../../../../../templight_${PLATFORM}.tar.bz2"
-    rm "${OUT_FILE}"
+    rm -f "${OUT_FILE}"
     tar -cvjf "${OUT_FILE}" templight*
   cd ../../../..
 cd ..
