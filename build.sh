@@ -62,6 +62,7 @@ cd metashell
     OUT_FILE="../../../../../templight_${PLATFORM}.tar.bz2"
     rm -f "${OUT_FILE}"
     tar -cvjf "${OUT_FILE}" templight*
+    echo "Generated Templight archive: $(basename "${OUT_FILE}")"
   cd ../../../..
 cd ..
 
