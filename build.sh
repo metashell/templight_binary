@@ -53,7 +53,10 @@ cd metashell
   git checkout $(cat ../commit)
   ./build.sh
   cd bin
-    PLATFORM=$(ls | egrep '\.(deb|rpm)$' | sed 's/^metashell_[^_]*_//' | sed 's/\.\(deb\|rpm\)$//')
+    PLATFORM=$(ls |
+        egrep '\.(deb|rpm|7z)$' |
+        sed 's/^metashell_[^_]*_//' |
+        sed 's/\.[^.]*$//')
   cd ..
   cd 3rd/templight/build/bin
     OUT_FILE="../../../../../templight_${PLATFORM}.tar.bz2"
