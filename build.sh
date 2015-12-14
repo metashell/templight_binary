@@ -57,12 +57,16 @@ cd metashell
         egrep '\.(deb|rpm|7z)$' |
         sed 's/^metashell_[^_]*_//' |
         sed 's/\.[^.]*$//')
+
+    FILES_TO_ARCHIVE="$(cmake .. -DTEMPLIGHT_DEBUG=1 |
+        egrep 'TEMPLIGHT_(HEADERS|BINARY) = ' |
+        sed 's/^.*3rd\/templight\/build\//build\//')"
   cd ..
-  cd 3rd/templight/build/bin
-    OUT_FILE="../../../../../templight_${PLATFORM}.tar.bz2"
+  cd 3rd/templight
+    OUT_FILE="../../../templight_${PLATFORM}.tar.bz2"
     rm -f "${OUT_FILE}"
-    tar -cvjf "${OUT_FILE}" templight*
+    tar -hcvjf "${OUT_FILE}" ${FILES_TO_ARCHIVE}
     echo "Generated Templight archive: $(basename "${OUT_FILE}")"
-  cd ../../../..
+  cd ../..
 cd ..
 
