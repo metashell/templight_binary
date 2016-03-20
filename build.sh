@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Detect platform
 if [ "`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_ID`" = "DISTRIB_ID=Ubuntu" ]
 then
