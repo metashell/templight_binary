@@ -52,6 +52,7 @@ fi
 git clone https://github.com/sabel83/metashell.git
 cd metashell
   git fetch origin
+  git fetch origin '+refs/pull/*/head:refs/remotes/origin/pr/*'
   git checkout $(cat ../commit)
   ./build.sh
   cd bin
