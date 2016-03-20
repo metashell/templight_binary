@@ -1,8 +1,16 @@
 #!/bin/bash
 
-BRANCH=develop
+if [ -z "${BRANCH}" ]
+then
+  BRANCH=master
+fi
 
-git clone https://github.com/sabel83/metashell.git tmp
+if [ -z "${OWNER}" ]
+then
+  OWNER=sabel83
+fi
+
+git clone https://github.com/${OWNER}/metashell.git tmp
 cd tmp
   git checkout origin/${BRANCH}
   git rev-parse HEAD > ../commit
