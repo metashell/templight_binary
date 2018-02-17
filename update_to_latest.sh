@@ -10,6 +10,7 @@ then
   OWNER=sabel83
 fi
 
+rm -rf tmp
 git clone https://github.com/${OWNER}/metashell.git tmp
 cd tmp
   git checkout origin/${BRANCH}
