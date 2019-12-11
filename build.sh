@@ -56,20 +56,14 @@ cd metashell
   git checkout $(cat ../commit)
   ./build.sh
   cd bin
-    PLATFORM=$(ls |
-        egrep '\.(deb|rpm|7z)$' |
-        sed 's/^metashell_[^_]*_//' |
-        sed 's/\.[^.]*$//')
+    PLATFORM=$(ls)
 
-    FILES_TO_ARCHIVE="$(cmake .. -DTEMPLIGHT_DEBUG=1 |
-        egrep 'TEMPLIGHT_(HEADERS|BINARY) = ' |
-        sed 's/^.*3rd\/templight\/build\//build\//')"
+    cd "$PLATFORM"
+      OUT_FILE="../../../templight_${PLATFORM}.tar.bz2"
+      rm -f "${OUT_FILE}"
+      tar -hcvjf "${OUT_FILE}" templight/bin/templight
+      echo "Generated Templight archive: $(basename "${OUT_FILE}")"
+    cd ..
   cd ..
-  cd 3rd/templight
-    OUT_FILE="../../../templight_${PLATFORM}.tar.bz2"
-    rm -f "${OUT_FILE}"
-    tar -hcvjf "${OUT_FILE}" ${FILES_TO_ARCHIVE}
-    echo "Generated Templight archive: $(basename "${OUT_FILE}")"
-  cd ../..
 cd ..
 
